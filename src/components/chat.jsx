@@ -1,6 +1,9 @@
 import { useState } from "react";
 
+let msgList = []
+
 const Chat = () => {
+
     const [message, setMessage] = useState('')
 
     const [chat, setChat] = useState([])
@@ -8,7 +11,7 @@ const Chat = () => {
     return (
         <>
             <div className="chat">
-                {chat}
+                {chat.join('\n')}
             </div>
 
             <div>
@@ -21,13 +24,15 @@ const Chat = () => {
                 />
                 <button
                     onClick={() => {
-                        setChat(...chat, localStorage.getItem('username') + ": " + message)
+                        msgList.push((localStorage.getItem('username') + ": " + message))
+                        setChat(msgList)
                         setMessage('')
                     }}
                 >Send</button>
                 <button
                     onClick={() => {
-                        setChat('')
+                        msgList.pop()
+                        setChat(msgList)
                     }}
                 >Delete</button>
             </div>
