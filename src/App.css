@@ -8,10 +8,33 @@
 }
 
 .chat {
+  padding: 0 0 6px 3px;
   margin: 10px 0 0 10px;
-  border: 2px #282c34 solid;
+  border: 1px #282c34 solid;
   border-radius: 2px;
   width: 50%;
+}
+
+.message {
+  display: inline;
+  font-size: 13px;
+  text-align: center;
+}
+
+button {
+  display: flex;
+}
+
+.user {
+  width: fit-content;
+  border: #282c34 2px solid;
+  border-radius: 10px;
+  padding: 3px 4px 4px 3px;
+  margin: 2px;
+}
+
+.message {
+  padding: 0 0 3px 20px;
 }
 
 .code {
