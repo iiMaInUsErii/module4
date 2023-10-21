@@ -14,19 +14,14 @@ const API = () => {
         <>
             <h1>API</h1>
 
-            <div>
+            <div className={'App'}>
                 <h3>{ data.title }</h3>
                 <img
-                    width={'100%'}
+                    width={'40%'}
                     src={ data.url }
                     alt="APOD"
                 />
                 <p>{ data.explanation }</p>
-            </div>
-
-            API Response:
-            <div className="code">
-                <code>{ JSON.stringify(data) }</code>
             </div>
         </>
     )

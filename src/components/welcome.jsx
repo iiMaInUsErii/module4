@@ -1,13 +1,14 @@
 const Welcome = () => {
     return (
-        <>
-            Привет {localStorage.getItem('username')}
+        <div className={'App'}>
+            <br/>
+            <h3>Привет {localStorage.getItem('username')}</h3>
             <br/>
             <button onClick={() => {
                 localStorage.removeItem('username')
                 window.location.reload(false)
             }}>Выйти</button>
-        </>
+        </div>
     )
 };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-let listMsg = JSON.parse(localStorage.getItem("msg"))
+let listMsg
 
 let infoMsg = {
     user: (localStorage.getItem("username")), 
@@ -16,36 +16,39 @@ const Chat = () => {
     useEffect(() => {
         if(localStorage.getItem('msg') == null) {
             localStorage.setItem('msg', JSON.stringify([]))
-            setChat(JSON.parse(localStorage.getItem('msg')))
-        } else {
-            setChat(JSON.parse(localStorage.getItem('msg')))
         }
+        
+        setChat(JSON.parse(localStorage.getItem('msg')))
+        listMsg = JSON.parse(localStorage.getItem("msg"))
     }, [])
 
     return (
         <>
             <div className="chat">
                 {chat.map((el, key) => (
-                    <div className="message">
+                    <div key={key} className="message">
                         <div className="user">
-                            { el.user }:
+                            { el.user }: 
+                            <button
+                                onClick={() => {
+                                    listMsg.splice(key, 1)
+                                    localStorage.setItem("msg", JSON.stringify(listMsg))
+                                    listMsg = JSON.parse(localStorage.getItem("msg"))
+                                    infoMsg.message = ""
+                                    setChat(JSON.parse(localStorage.getItem('msg')))
+                                }}><i className="bi bi-trash"></i>
+                            </button>
                         </div>
                         <div className="message">
                             { el.message }
-                            <button
-                            onClick={() => {
-                    listMsg.splice(key, 1)
-                    localStorage.setItem("msg", JSON.stringify(listMsg))
-                    listMsg = JSON.parse(localStorage.getItem("msg"))
-                    infoMsg.message = ""
-                    setChat(JSON.parse(localStorage.getItem('msg')))
-                            }}>Delete</button>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div class="inputMessage">
+            <br/>
+
+            <div className="inputMessage">
                 <input
                     type="text"
                     placeholder="Введите сообщение"
@@ -61,14 +64,14 @@ const Chat = () => {
                     listMsg = JSON.parse(localStorage.getItem("msg"))
                     infoMsg.message = ""
                     setChat(JSON.parse(localStorage.getItem('msg')))
-                }}>Отправить</button>
-                <button onClick={() => {
+                }}><i className="bi bi-send"></i></button>
+                {/* <button onClick={() => {
                     listMsg.pop()
                     localStorage.setItem("msg", JSON.stringify(listMsg))
                     listMsg = JSON.parse(localStorage.getItem("msg"))
                     infoMsg.message = ""
                     setChat(JSON.parse(localStorage.getItem('msg')))
-                }}>Удалить</button>
+                }}><i className="bi bi-trash"></i></button> */}
             </div>
         </>
     )

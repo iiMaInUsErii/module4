@@ -9,7 +9,8 @@ const Auth = () => {
     }
 
     return(
-        <>
+        <div className="App">
+            <br/>
             <label>Your name:</label>
             <input
                 value={userNameValue}
@@ -21,7 +22,7 @@ const Auth = () => {
                 setUserToLocalHost()
                 window.location.reload(false)
             }}>OK</button>
-        </>
+        </div>
     )
 };
 

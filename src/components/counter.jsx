@@ -5,11 +5,11 @@ const Counter = () => {
     const [count, setCount] = useState(0)
 
     return (
-        <>
-            <div>{ count }</div>
-            <button onClick={() => setCount(count-1)}>-</button>
-            <button onClick={() => setCount(count+1)}>+</button>
-        </>
+        <div className="App">
+            <h2>{ count }</h2>
+            <button onClick={() => setCount(count-1)}><span className="bigFont">-</span></button> 
+            <button onClick={() => setCount(count+1)}><span className="bigFont">+</span></button>
+        </div>
     )
 };
 
