@@ -6,6 +6,7 @@ const Welcome = () => {
             <br/>
             <button onClick={() => {
                 localStorage.removeItem('username')
+                localStorage.removeItem('isAuth', true) 
                 window.location.reload(false)
             }}>Выйти</button>
         </div>
